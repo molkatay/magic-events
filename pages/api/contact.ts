@@ -13,7 +13,6 @@ export default async function handler(
     // The body field will contain the form values.
     // You can make a request to your site with these values.
     const body = JSON.parse(req.body)
-console.log(body)
 
     const payload = {
       webform_id: [{value: "contact"}],

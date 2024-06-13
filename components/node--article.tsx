@@ -2,6 +2,8 @@ import Image from "next/image"
 import { DrupalNode } from "next-drupal"
 
 import { absoluteUrl, formatDate } from "lib/utils"
+import { MediaImage } from './media--image'
+import { Breadcrumbs } from './breadcrumbs'
 
 interface NodeArticleProps {
   node: DrupalNode
@@ -9,6 +11,19 @@ interface NodeArticleProps {
 
 export function NodeArticle({ node, ...props }: NodeArticleProps) {
   return (
+    <>
+      <Breadcrumbs
+        items={[
+          {
+            title: "Blog",
+            url: "/articles"
+          },
+          {
+
+            title: node.title
+          }
+        ]}
+      />
     <article {...props}>
       <h1 className="mb-4 text-6xl font-black leading-tight">{node.title}</h1>
       <div className="mb-4 text-gray-600">
@@ -20,21 +35,8 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
         ) : null}
         <span> - {formatDate(node.created)}</span>
       </div>
-      {node.field_image2 && (
-        <figure>
-          <Image
-            src={absoluteUrl(node.field_image2.uri.url)}
-            width={768}
-            height={400}
-            alt={node.field_image2.resourceIdObjMeta.alt}
-            priority
-          />
-          {node.field_image2.resourceIdObjMeta.title && (
-            <figcaption className="py-2 text-sm text-center text-gray-600">
-              {node.field_image2.resourceIdObjMeta.title}
-            </figcaption>
-          )}
-        </figure>
+      {node.field_media_image && (
+        <MediaImage media={node.field_media_image} width={335} height={225} className="mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[17rem] sm:mb-0 xl:mb-6 xl:w-full" />
       )}
       {node.body?.processed && (
         <div
@@ -56,5 +58,6 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
             </div>
         )}
     </article>
+    </>
   )
 }

@@ -46,9 +46,12 @@ export function MenuUser() {
             </figure>
             <div className="flex flex-col text-sm px-2">
 
-              <span className="inline-block font-medium max-w-[12rem] truncate">Welcome Back
-                {data.user.name}
-              </span>
+              <div className="flex items-center gap-2">
+                <div className="">Welcome Back</div>
+                <div className="text-sm font-medium bold-12">
+                  {data.user.name}
+                </div>
+              </div>
             </div>
           </MenuButton>
 

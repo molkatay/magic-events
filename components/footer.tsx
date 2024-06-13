@@ -26,7 +26,7 @@ export interface FooterProps {
 export function Footer({ menus, blocks, siteInfos }: FooterProps) {
   return (
     <footer className="py-5">
-      <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div className="w-full max-w-screen-xl mx-auto md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/" className="mb-10">
             <Image src={absoluteUrl(siteInfos.siteInfos.logo)}

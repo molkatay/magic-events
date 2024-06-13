@@ -23,18 +23,18 @@ export function NodeEvent({ node, ...props }: NodeEventProps) {
         ) : null}
         <span> {formatDate(node.field_event_date)}</span>
       </div>
-      {node.field_image2 && (
+      {node.field_media_image && (
         <figure>
           <Image
-            src={absoluteUrl(node.field_image2.uri.url)}
+            src={absoluteUrl(node.field_media_image.uri.url)}
             width={768}
             height={400}
-            alt={node.field_image2.resourceIdObjMeta.alt}
+            alt={node.field_media_image.resourceIdObjMeta.alt}
             priority
           />
-          {node.field_image2.resourceIdObjMeta.title && (
+          {node.field_media_image.resourceIdObjMeta.title && (
             <figcaption className="py-2 text-sm text-center text-gray-600">
-              {node.field_image2.resourceIdObjMeta.title}
+              {node.field_media_image.resourceIdObjMeta.title}
             </figcaption>
           )}
         </figure>

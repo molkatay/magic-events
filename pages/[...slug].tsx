@@ -17,6 +17,7 @@ import {
   TaxonomyTermTags,
   TaxonomyTermTagsProps,
 } from "components/taxonomy-term--tags"
+import { PageHeader } from '../components/page-header'
 
 const RESOURCE_TYPES = [
   "node--page",
@@ -47,6 +48,7 @@ export default function ResourcePage({
         title: resource.title || resource.name,
       }}
     >
+
       {resource.type === "node--page" && (
         <NodePage node={resource as DrupalNode} />
       )}

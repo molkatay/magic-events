@@ -21,7 +21,7 @@ export default function ContactPage({
       blocks={blocks} siteInfos={siteInfos}
     >
       <PageHeader
-        heading={'website-feedback'}
+        heading={'Contact Us'}
         breadcrumbs={[
           {
             title: 'Contact'

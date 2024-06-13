@@ -17,24 +17,31 @@ export function FormContact({ className, ...props }: FormContactProps) {
   const onSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.target)
+console.log(data)
+    console.log(session)
 
     setFormStatus({ status: "fetching" })
-console.debug(JSON.stringify(Object.fromEntries(data)))
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(Object.fromEntries(data)),
-    })
 
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_IMAGE_DRUPAL_BASE_URL}/webform_rest/submit`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(data)),
+      }
+    )
     if (!response.ok) {
       return setFormStatus({
         status: "error",
-        message: "an-error-occured-please-try-again",
+        message: "An error occured please try again",
       })
     }
 
     return setFormStatus({
       status: "success",
-      message: "your-message-has-been-sent",
+      message: "Your message has been sent",
     })
   }
 

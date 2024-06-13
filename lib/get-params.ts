@@ -18,8 +18,9 @@ export function getParams(
   if (name === "node--article--card") {
     return params
       .addFilter("status", "1")
-      .addInclude(["field_media_image.field_media_image", "uid.user_picture"])
-      .addFields("node--article", ["title", "path", "field_media_image"])
+      .addInclude(["field_media_image.field_media_image", "uid.user_picture", "uid"])
+      .addFields("node--article", ["title", "path", "field_media_image", "uid", "created"])
+
       .addFields("media--image", ["field_media_image"])
       .addFields("file--file", ["uri", "resourceIdObjMeta"])
   }
@@ -50,14 +51,21 @@ export function getParams(
   if (name === "node--event--card") {
     return params
       .addFilter("status", "1")
-      .addInclude(["field_media_image.field_media_image", "uid.user_picture"])
-      .addFields("node--article", [
+      .addInclude(["field_media_image.field_media_image", "uid",  "field_tags"])
+      .addFields("node--event", [
         "title",
         "path",
         "field_media_image",
+        "field_event_date",
+        "field_tags",
+        "field_category",
+        "uid"
       ])
+      .addFields("user--user", ["display_name", "user_picture"])
       .addFields("media--image", ["field_media_image"])
       .addFields("file--file", ["uri", "resourceIdObjMeta"])
+      .addFields("taxonomy_term--event_category", ["name", "path"])
+      .addFields("taxonomy_term--tags", ["name", "path"])
   }
 
   if (name === "node--event") {
@@ -75,7 +83,9 @@ export function getParams(
         "field_summary",
         "field_tags",
         "field_media_image",
+        "field_event_date"
       ])
+      .addFields("user--user", ["display_name", "user_picture"])
       .addFields("media--image", ["field_media_image"])
       .addFields("file--file", ["uri", "resourceIdObjMeta"])
       .addFields("taxonomy_term--event_category", ["name", "path"])
