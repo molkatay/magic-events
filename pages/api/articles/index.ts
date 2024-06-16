@@ -72,7 +72,6 @@ export default async function handler(
         withAuth: session.accessToken,
       }
     )
-
     // 2. Create the media--image resource from the file--file.
     const media = await drupal.createResource<DrupalMedia>(
       "media--image",
@@ -133,7 +132,6 @@ export default async function handler(
     if (error instanceof JsonApiErrors) {
       return res.status(error.statusCode).json(error.errors)
     }
-
     res.status(500).json({ message: "Something went wrong. Please try again." })
   }
 }

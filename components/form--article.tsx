@@ -22,6 +22,7 @@ export function FormArticle({ className, ...props }: FormArticleProps) {
     const response = await fetch("/api/articles", {
       method: "POST",
       body: data,
+
     })
 
     if (!response.ok) {

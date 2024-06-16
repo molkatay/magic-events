@@ -22,7 +22,6 @@ export default function IndexPage({
                                   }: IndexPageProps) {
   return (
     <Layout meta={{ title: 'home' }} menus={menus} siteInfos={siteInfos}>
-      <div className="container mx-auto px-4 py-5">
 
         <div
           className="container grid gap-8 py-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
@@ -41,9 +40,9 @@ export default function IndexPage({
         </div>
         {promotedEvents?.length ? (
           <div className="container">
-            <p className="py-10 font-serif text-3xl text-center text-text">
+            <p className="py-10 text-3xl font-semibold mb-8 text-center text-text">
               {
-                'explore-events-across-every-type-of-occasion-ingredient-and-skill-level'
+                'Explore events'
               }
             </p>
             <div className="grid gap-8 sm:grid-cols-2">
@@ -53,7 +52,6 @@ export default function IndexPage({
             </div>
           </div>
         ) : null}
-      </div>
 
     </Layout>
 )
@@ -67,6 +65,7 @@ context: GetStaticPropsContext
     DrupalNode[]
   >("node--article", context, {
     params: getParams("node--article", "card")
+
       .addFilter("promote", "1")
       .addPageLimit(3)
       .addSort("created", "DESC")

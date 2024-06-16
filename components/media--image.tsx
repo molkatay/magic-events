@@ -10,6 +10,7 @@ export function MediaImage({
   layout = "responsive",
   objectFit,
   width,
+  className,
   height,
   priority,
   ...props
@@ -34,6 +35,7 @@ export function MediaImage({
         src={absoluteUrl(image.uri.url)}
         layout={layout}
         objectFit={objectFit}
+        className={className}
         loader={loaderProp}
         alt={image.resourceIdObjMeta.alt || "Image"}
         title={image.resourceIdObjMeta.title}

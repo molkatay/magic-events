@@ -8,9 +8,7 @@ import { FormArticle } from "components/form--article"
 interface NewArticlesPageProps extends LayoutProps {}
 
 export default function NewArticlesPage({
-  menus,
-                                          siteInfos,
-  blocks,
+  menus, siteInfos, blocks,
 }: NewArticlesPageProps) {
 
   return (

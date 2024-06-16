@@ -1,50 +1,47 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import { drupal } from '../../lib/drupal'
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  request: NextApiRequest,
+  response: NextApiResponse
 ) {
   try {
     // Only accept POST requests.
-    if (req.method !== "POST") {
-      return res.status(405).end()
+    if (request.method !== "POST") {
+      return response.status(405).end()
     }
 
     // The body field will contain the form values.
     // You can make a request to your site with these values.
-    const body = JSON.parse(req.body)
-console.log(body)
+    const body = JSON.parse(request.body)
 
+    // Format the payload for /entity/contact_message
     const payload = {
-      webform_id: [{value: "contact"}],
-      name: [{ value: body.name }],
-      email: [{ value: body.email }],
-      subject: [{ value: body.subject }],
-      message: [{ value: body.message }],
+      webform_id: "contact",
+      name:  body.name,
+      email: body.email,
+      subject: body.subject ,
+      message: body.message ,
     }
 
-    // Send the payload to Drupal.
-    // Ensure you have the /entity/contact_message resource enabled.
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/webform_rest/submit`,
-      {
+      const url = drupal.buildUrl(`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/webform_rest/submit?_format=json`)
+      const result = await drupal.fetch(url.toString(), {
         method: "POST",
+        body: JSON.stringify(payload),
+
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        body: JSON.stringify(payload),
+      })
+
+      if (!result.ok) {
+        throw new Error()
       }
-    )
+      response.status(200).end()
 
-    // An error occured on Drupal.
-    // Here you can throw error, or send back the response json with the error.
-    if (!response.ok) {
-      throw new Error()
-    }
-
-    // The form has been submitted. Return success 200.
-    res.end()
   } catch (error) {
-    res.status(500).end(error)
+
+    return response.status(400).json(error.message)
   }
 }
