@@ -17,21 +17,12 @@ export function FormContact({ className, ...props }: FormContactProps) {
   const onSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.target)
-console.log(data)
-    console.log(session)
-
     setFormStatus({ status: "fetching" })
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(Object.fromEntries(data)),
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_IMAGE_DRUPAL_BASE_URL}/webform_rest/submit`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(Object.fromEntries(data)),
-      }
-    )
+    })
     if (!response.ok) {
       return setFormStatus({
         status: "error",
@@ -70,7 +61,7 @@ console.log(data)
         {status === "authenticated" ? (
           <>
             <p>{session?.user.name}</p>
-            <input type="hidden" name="email" value={session?.user.name} />
+            <input type="hidden" name="name" value={session?.user.name} />
           </>
         ) : (
           <input

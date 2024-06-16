@@ -5,7 +5,7 @@ import { absoluteUrl, formatDate } from "lib/utils"
 import { MediaImage } from './media--image'
 import { Breadcrumbs } from './breadcrumbs'
 
-interface NodeArticleProps {
+export interface NodeArticleProps {
   node: DrupalNode
 }
 
