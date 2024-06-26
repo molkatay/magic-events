@@ -22,11 +22,18 @@ export function MenuUser() {
 
   if (status === 'unauthenticated') {
     return (
+
+      <div class="flex flex-col w-full sm:w-auto sm:flex-row p-4">
+ 
+      <Link href="/register" passHref legacyBehavior={true}>
+        <a
+          className="flex flex-row items-center justify-center w-full px-2 py-2 mb-4 text-sm font-bold bg-green-300 leading-6 capitalize duration-100 transform rounded-sm shadow cursor-pointer focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 focus:outline-none sm:mb-0 sm:w-auto sm:mr-4 md:pl-8 md:pr-6 xl:pl-12 xl:pr-10   hover:shadow-lg hover:-translate-y-1">{'Create my account'}</a>
+      </Link>
       <Link href="/login" passHref legacyBehavior={true}>
         <a
-          className="flexCenter gap-2 rounded-full border btn_dark_green text-text hover:underline">{'login'}</a>
+          className="flex items-center justify-center w-full px-2 py-2 text-sm font-bold leading-6 capitalize duration-100 transform border-2 rounded-sm cursor-pointer border-green-300 focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 focus:outline-none sm:w-auto sm:px-6 border-text  hover:shadow-lg hover:-translate-y-1">{'Sign in'}</a>
       </Link>
-
+  </div>
     )
   }
 

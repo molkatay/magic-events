@@ -67,6 +67,7 @@ context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<AccountPageProps>> {
   // Check if user is authenticated.
   const session = await getSession({ ctx: context })
+  console.debug(session)
   if (!session) {
     return {
       redirect: {
@@ -75,6 +76,7 @@ context: GetServerSidePropsContext
       }
     }
   }
+
 
   // Fetch all articles sorted by the user.
   const articles = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
