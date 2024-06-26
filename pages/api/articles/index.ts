@@ -124,6 +124,7 @@ export default async function handler(
           .getQueryObject(),
       }
     )
+    console.log(article)
 
     // The article has been created.
     // Return the article resource.

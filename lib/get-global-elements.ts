@@ -61,7 +61,7 @@ export async function getGlobalElements(
     }
     const data = await response.json();
     // Assuming the structure of your API response
-    siteInfos = {
+    siteInfos = { 
       name: data.data.attributes.name || `${siteConfig.name}`,
       slogan: data.data.attributes.slogan || `${siteConfig.slogan}`,
       logo: data.data.attributes.global_logo || "/hilink-logo.svg",

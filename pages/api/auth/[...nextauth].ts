@@ -5,6 +5,7 @@ import { clearJWT, getJWT, refreshAccessToken } from "lib/jwt";
 export default NextAuth({
   pages: {
     signIn: "/login",
+    signUp: "/register",
   },
   providers: [
     CredentialsProvider({
@@ -77,7 +78,6 @@ export default NextAuth({
       if (token?.accessToken) {
         const accessToken = token.accessToken;
         session.accessToken = accessToken;
-
         // Decode token and pass info to session.
         // This data will be available client-side.
         const decoded = jwt_decode<User>(accessToken);
@@ -86,6 +86,7 @@ export default NextAuth({
         session.user.email = decoded.email;
         session.user.name = decoded.name;
         session.user.image = decoded.image;
+
       }
       return session;
     },
