@@ -19,6 +19,13 @@ export const config = {
   },
 }
 
+// Function to decode Base64 Basic Auth credentials
+function decodeBase64Credentials(encodedString) {
+  const decodedString = Buffer.from(encodedString, 'base64').toString('utf-8');
+  const [username, password] = decodedString.split(':');
+  return { username, password };
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -40,6 +47,8 @@ export default async function handler(
     const form = new Formidable({
       keepExtensions: true,
     })
+    // Decode the BasicAuth credentials from the session
+    const { username, password } = decodeBase64Credentials(session.basicAuth);
 
     const fields = await new Promise<FormBodyFields>((resolve, reject) => {
       form.parse(req, async (error, fields, files) => {
@@ -55,7 +64,6 @@ export default async function handler(
         })
       })
     })
-
     const file = await drupal.createFileResource<DrupalFile>(
       "file--file",
       {
@@ -69,9 +77,11 @@ export default async function handler(
         },
       },
       {
-        withAuth: session.accessToken,
+        withAuth: { username, password },
       }
     )
+    console.debug(file)
+
     // 2. Create the media--image resource from the file--file.
     const media = await drupal.createResource<DrupalMedia>(
       "media--image",
@@ -91,7 +101,7 @@ export default async function handler(
         },
       },
       {
-        withAuth: session.accessToken,
+        withAuth: { username, password },
       }
     )
 
@@ -118,13 +128,13 @@ export default async function handler(
         },
       },
       {
-        withAuth: session.accessToken,
+        withAuth: { username, password },
         params: new DrupalJsonApiParams()
           .addFields("node--article", ["title"])
           .getQueryObject(),
       }
     )
-    console.log(article)
+    console.debug(res)
 
     // The article has been created.
     // Return the article resource.
