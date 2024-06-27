@@ -49,7 +49,8 @@ export default NextAuth({
             return null;
           }
 
-          return { accessToken: json.access_token, expires_in: json.expires_in };
+          return { accessToken: json.access_token, expires_in: json.expires_in, username: credentials.username,
+            password: credentials.password };
         } catch (error) {
           console.error("Error authorizing credentials:", error);
           return null;
@@ -65,11 +66,10 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, user, account }) {
       if (account && user) {
-        // Forward the accessToken to the session.
-        token = {
-          accessToken: user.accessToken,
-          accessTokenExpires: Date.now() + user.expires_in * 1000,
-        };
+        token.accessToken = user.accessToken;
+        token.accessTokenExpires = Date.now() + user.expires_in * 1000;
+        token.username = user.username;
+        token.password = user.password;
       }
 
       return await getJWT(token);
@@ -86,8 +86,7 @@ export default NextAuth({
         session.user.email = decoded.email;
         session.user.name = decoded.name;
         session.user.image = decoded.image;
-
-      }
+        session.basicAuth = btoa(`${token.username}:${token.password}`);      }
       return session;
     },
   },
