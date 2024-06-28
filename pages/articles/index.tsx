@@ -36,8 +36,8 @@ export default function ArticlesPage({
           ]}
         />
 
-        <div className="container">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+<div className="container mx-auto py-5">
+<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => (
               <NodeArticleCard key={article.id} node={article} />
             ))}

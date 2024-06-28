@@ -23,7 +23,7 @@ const RESOURCE_TYPES = [
   "node--page",
   "node--article",
   "node--event",
-  "taxonomy_term--event_category",
+  "taxonomy_term--event_type",
   "taxonomy_term--tags",
 ]
 
@@ -63,7 +63,7 @@ export default function ResourcePage({
       {resource.type === "node--event" && (
         <NodeEvent node={resource as DrupalNode} />
       )}
-      {resource.type === "taxonomy_term--event_category" && (
+      {resource.type === "taxonomy_term--event_type" && (
         <TaxonomyTermeventCategory
           term={resource as DrupalTaxonomyTerm}
           additionalContent={
@@ -143,13 +143,13 @@ export async function getStaticProps(
       })
   }
 
-  if (resource.type === "taxonomy_term--event_category") {
+  if (resource.type === "taxonomy_term--event_type") {
     // Fetch the term content.
     additionalContent["termContent"] =
       await drupal.getResourceCollectionFromContext("node--event", context, {
         params: getParams("node--event", "card")
           .addSort("created", "DESC")
-          .addFilter("field_category.id", resource.id, "IN")
+          .addFilter("field_event_type.id", resource.id, "IN")
           .getQueryObject(),
       })
   }

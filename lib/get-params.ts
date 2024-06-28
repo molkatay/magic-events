@@ -58,13 +58,13 @@ export function getParams(
         "field_media_image",
         "field_event_date",
         "field_tags",
-        "field_category",
+        "field_event_type",
         "uid"
       ])
       .addFields("user--user", ["display_name", "user_picture"])
       .addFields("media--image", ["field_media_image"])
       .addFields("file--file", ["uri", "resourceIdObjMeta"])
-      .addFields("taxonomy_term--event_category", ["name", "path"])
+      .addFields("taxonomy_term--event_type", ["name", "path"])
       .addFields("taxonomy_term--tags", ["name", "path"])
   }
 
@@ -72,14 +72,14 @@ export function getParams(
     return params
       .addInclude([
         "field_media_image.field_media_image",
-        "field_category",
+        "field_event_type",
         "field_tags",
       ])
       .addFields("node--event", [
         "title",
         "status",
         "path",
-        "field_category",
+        "field_event_type",
         "field_summary",
         "field_tags",
         "field_media_image",
@@ -88,7 +88,7 @@ export function getParams(
       .addFields("user--user", ["display_name", "user_picture"])
       .addFields("media--image", ["field_media_image"])
       .addFields("file--file", ["uri", "resourceIdObjMeta"])
-      .addFields("taxonomy_term--event_category", ["name", "path"])
+      .addFields("taxonomy_term--event_type", ["name", "path"])
       .addFields("taxonomy_term--tags", ["name", "path"])
   }
 
@@ -125,7 +125,7 @@ export function getParams(
     return params.addFields("taxonomy_term--tags", ["name", "path"])
   }
 
-  if (name === "taxonomy_term--event_category") {
-    return params.addFields("taxonomy_term--event_category", ["name", "path"])
+  if (name === "taxonomy_term--event_type") {
+    return params.addFields("taxonomy_term--event_type", ["name", "path"])
   }
 }

@@ -1,45 +1,48 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
-import { DrupalBlock, DrupalNode } from "next-drupal"
+import { DrupalNode } from "next-drupal"
 
 import { drupal } from "lib/drupal"
 import { getGlobalElements } from "lib/get-global-elements"
 import { getParams } from "lib/get-params"
 import { Layout, LayoutProps } from "components/layout"
-import { NodeEventTeaser } from "components/node--event--teaser"
+import { NodeEventCard } from "components/node--event--card"
 import { PageHeader } from "components/page-header"
 
-interface EventPageProps extends LayoutProps {
+interface EventsPageProps extends LayoutProps {
   events: DrupalNode[]
 }
 
 export default function EventsPage({
   events,
   menus,
-  blocks,
-}: EventPageProps) {
+  siteInfos
+}: EventsPageProps) {
 
   return (
     <Layout
-      menus={menus} blocks={blocks}
+      menus={menus}
       meta={{
-        title: "Events",
+        title: 'Events'
       }}
+      siteInfos={siteInfos}
     >
-      <PageHeader
-        heading="events"
-        breadcrumbs={[
-          {
-            title: "events",
-          },
-        ]}
-      />
-      <div className="container">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {events.map((event) => (
-            <NodeEventTeaser key={event.id} node={event} />
-          ))}
+
+        <PageHeader
+          heading={'Events'}
+          breadcrumbs={[
+            {
+              title: 'Events'
+            }
+          ]}
+        />
+
+        <div className="container mx-auto py-5">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {events.map((event) => (
+              <NodeEventCard key={event.id} node={event} />
+            ))}
+          </div>
         </div>
-      </div>
     </Layout>
   )
 }
@@ -47,7 +50,7 @@ export default function EventsPage({
 export async function getStaticProps(
   context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<EventPageProps>> {
-  // Fetch all published events sorted by date.
+  // Fetch all published articles sorted by date.
   const events = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--event",
     context,
@@ -58,13 +61,10 @@ export async function getStaticProps(
     }
   )
 
-
-
   return {
     props: {
       ...(await getGlobalElements(context)),
       events,
-      blocks
     },
   }
 }
