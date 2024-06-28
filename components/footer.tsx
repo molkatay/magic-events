@@ -25,7 +25,7 @@ export interface FooterProps {
 
 export function Footer({ menus, blocks, siteInfos }: FooterProps) {
   return (
-    <footer className="py-5">
+    <footer className="container mx-auto py-5">
       <div className="w-full max-w-screen-xl mx-auto md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/" className="mb-10">

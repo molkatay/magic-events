@@ -13,15 +13,16 @@ export function Breadcrumbs({ items, ...props }: BreadcrumbsProps) {
   }
 
   items.unshift({
-    title: "home",
+    title: "Home",
     url: "/",
   })
 
   return (
-    <nav aria-label="breadcrumb" className="container mx-auto px-4 py-6 max-container relative z-30 flex justify-start w-full" {...props}>
+    
+    <nav aria-label="breadcrumb" className="max-container relative z-30 flex justify-start w-full" {...props}>
       <ol className="flex">
         {items.map((item, index) => (
-          <li key={index} className="flex items-center leading-none truncate">
+          <li key={index} className="flex items-center truncate">
             {item.url ? (
               <Link href={item.url} passHref legacyBehavior={true}>
                 <a className="underline text-link">{item.title}</a>

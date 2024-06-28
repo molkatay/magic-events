@@ -11,7 +11,9 @@ export interface NodeArticleProps {
 
 export function NodeArticle({ node, ...props }: NodeArticleProps) {
   return (
-    <>
+    <div
+    className="container mx-auto py-5">
+   
       <Breadcrumbs
         items={[
           {
@@ -58,6 +60,6 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
             </div>
         )}
     </article>
-    </>
+    </div>
   )
 }

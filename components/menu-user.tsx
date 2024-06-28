@@ -43,7 +43,7 @@ export function MenuUser() {
 
         <Menu as="div" className="relative z-50">
           <MenuButton
-            className="flex items-center justify-center space-x-1 hover:bg-faint-white cursor-pointer px-4">
+            className="flex items-center justify-center space-x-1 hover:bg-faint-white cursor-pointer pl-4">
 
             <figure className="flex-none fill-current">
               <img

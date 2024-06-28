@@ -28,7 +28,7 @@ export default function AccountsPage({
         title: 'My account'
       }}
     >
-      <div className="container mx-auto px-4 py-5">
+      <div className="container mx-auto py-5">
 
         <PageHeader
           heading={'My account'}

@@ -15,7 +15,7 @@ export function PageHeader({
 }: PageHeaderProps) {
   return (
 
-    <div className={classNames("container", className)} {...props}>
+    <div className={classNames("container mx-auto py-5", className)} {...props}>
       {breadcrumbs?.length ? <Breadcrumbs items={breadcrumbs} /> : null}
       <div
         className={classNames(

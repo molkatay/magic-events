@@ -24,7 +24,7 @@ export default function IndexPage({
     <Layout meta={{ title: 'home' }} menus={menus} siteInfos={siteInfos}>
 
         <div
-          className="container grid gap-8 py-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+          className="container mx-auto py-5 grid gap-8 py-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
           {promotedArticles?.length
             ? promotedArticles.map((node, index) => (
               <NodeArticleCardAlt
@@ -39,7 +39,7 @@ export default function IndexPage({
             : null}
         </div>
         {promotedEvents?.length ? (
-          <div className="container">
+        <div className="container mx-auto py-5">
             <p className="py-10 text-3xl font-semibold mb-8 text-center text-text">
               {
                 'Explore events'
