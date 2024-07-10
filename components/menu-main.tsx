@@ -21,7 +21,7 @@ export function MenuMain({ items, ...props }: MenuMainProps) {
             (item.url !== "/" ? router.asPath.indexOf(item.url) === 0 : false)
           return (
             <li key={item.id}>
-              <Link href={item.url} passHref legacyBehavior={true} className={classNames(
+              <Link href={item.url} passHref className={classNames(
                     "regular-16 border-b-[3px] flex border-b-transparent transition-colors hover:text-primary",
                     {
                       "border-b-primary": isActive,

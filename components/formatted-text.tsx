@@ -41,7 +41,7 @@ const options: HTMLReactParserOptions = {
 
         if (href && isRelative(href)) {
           return (
-            <Link href={href} passHref legacyBehavior={true} className={className}>
+            <Link href={href} passHref className={className}>
              {domToReact(domNode.children)}
             </Link>
           )

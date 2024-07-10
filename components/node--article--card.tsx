@@ -30,7 +30,7 @@ export function NodeArticleCard({ node, ...props }: NodeArticleCardProps) {
         className="mb-1 block text-xs prose-slate prose-sm text-slate-600">Posted by {node.uid.display_name} - {formatDate(node.created)}</span>
       <span
         className="mb-1 block text-sm leading-6 text-cyan-500">{node.field_tags}</span>
-      <Link href={node.path.alias} passHref legacyBehavior={true} className="inline-flex items-center hover:underline text-slate-900 text-link font-bold">
+      <Link href={node.path.alias} passHref  className="inline-flex items-center hover:underline text-slate-900 text-link font-bold">
           
           {'View article'}
           <svg

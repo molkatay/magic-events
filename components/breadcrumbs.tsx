@@ -24,8 +24,8 @@ export function Breadcrumbs({ items, ...props }: BreadcrumbsProps) {
         {items.map((item, index) => (
           <li key={index} className="flex items-center truncate">
             {item.url ? (
-              <Link href={item.url} passHref legacyBehavior={true}>
-                <a className="underline text-link">{item.title}</a>
+              <Link href={item.url} className="underline text-link" passHref>
+                {item.title}
               </Link>
             ) : (
               item.title

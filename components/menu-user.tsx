@@ -26,9 +26,9 @@ export function MenuUser() {
 
       <div className="flex flex-col w-full sm:w-auto sm:flex-row p-4">
 
-        <Link href="/register" passHref legacyBehavior={true}>{'Create my account'}
+        <Link href="/register" passHref>{'Create my account'}
         </Link>
-        <Link href="/login" passHref legacyBehavior={true}>
+        <Link href="/login" passHref>
           {'Sign in'}
         </Link>
       </div>
