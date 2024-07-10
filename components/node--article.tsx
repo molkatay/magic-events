@@ -1,12 +1,15 @@
 import Image from "next/image"
 import { DrupalNode } from "next-drupal"
 
-import { absoluteUrl, formatDate } from "lib/utils"
+import { absoluteUrl, formatDate } from "../lib/utils"
 import { MediaImage } from './media--image'
 import { Breadcrumbs } from './breadcrumbs'
 
 export interface NodeArticleProps {
-  node: DrupalNode
+  node: DrupalNode,
+  additionalContent: {
+    termContent: DrupalNode[]
+  }
 }
 
 export function NodeArticle({ node, ...props }: NodeArticleProps) {

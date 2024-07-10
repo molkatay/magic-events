@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params'
 import { getSession } from 'next-auth/react'
 
-import { drupal } from 'lib/drupal'
-import { getGlobalElements } from 'lib/get-global-elements'
-import { Layout, LayoutProps } from 'components/layout'
-import { PageHeader } from 'components/page-header'
-import { NodeArticleRow } from 'components/node--article--row'
+import { drupal } from '../lib/drupal'
+import { getGlobalElements } from '../lib/get-global-elements'
+import { Layout, LayoutProps } from '../components/layout'
+import { PageHeader } from '../components/page-header'
+import { NodeArticleRow } from '../components/node--article--row'
 
 interface AccountPageProps extends LayoutProps {
   articles: DrupalNode[]
@@ -17,7 +17,8 @@ interface AccountPageProps extends LayoutProps {
 export default function AccountsPage({
                                        articles,
                                        menus,
-                                       siteInfos
+                                       siteInfos,
+                                       blocks
                                      }: AccountPageProps) {
 
   return (
@@ -27,6 +28,8 @@ export default function AccountsPage({
       meta={{
         title: 'My account'
       }}
+      blocks={blocks}
+
     >
       <div className="container mx-auto py-5">
 

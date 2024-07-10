@@ -6,15 +6,15 @@ import { MediaImage } from "./media--image"
 import React from 'react'
 import { formatDate } from '../lib/utils'
 
-interface NodeArticleCardAltProps extends React.HTMLProps<HTMLElement> {
+interface NodeEventCardAltProps extends React.HTMLProps<HTMLElement> {
   node: DrupalNode
 }
 
-export function NodeArticleCardAlt({
+export function NodeEventCardAlt({
   node,
   className,
   ...props
-}: NodeArticleCardAltProps) {
+}: NodeEventCardAltProps) {
 
   return (
     <article
@@ -34,8 +34,8 @@ export function NodeArticleCardAlt({
         <span
           className="mb-1 block text-sm leading-6 text-cyan-500">{node.field_tags}</span>
         <Link href={node.path.alias} passHref legacyBehavior={true} className="inline-flex items-center hover:underline text-slate-900 text-link font-bold">
-
-            {"View article"}
+ 
+            {"View event"}
             <svg
               className="w-5 h-5 ml-1"
               viewBox="0 0 24 24"

@@ -1,4 +1,4 @@
-import siteConfig from "site.config"
+import siteConfig from "../site.config"
 
 export function formatDate(input: string): string {
   const date = new Date(input)

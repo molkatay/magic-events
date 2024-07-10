@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
 import { JsonApiErrors } from "next-drupal"
 
-import { drupal } from "lib/drupal"
+import { drupal } from "../../../lib/drupal"
 
 export default async function handler(
   req: NextApiRequest,

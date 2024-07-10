@@ -37,7 +37,7 @@ export async function clearJWT(jwt: JWT) {
 }
 
 // Helper to obtain a new access_token from a refresh token.
-async function refreshAccessToken(token: JWT): Promise<JWT> {
+export async function refreshAccessToken(token: JWT): Promise<JWT> {
   console.log("Refreshing token", { token })
   try {
     const formData = new URLSearchParams()

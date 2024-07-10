@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { DrupalNode } from 'next-drupal'
 
-import { MediaImage } from 'components/media--image'
+import { MediaImage } from './media--image'
 import {
   absoluteUrl,
   formatDate,
@@ -30,9 +30,8 @@ export function NodeArticleCard({ node, ...props }: NodeArticleCardProps) {
         className="mb-1 block text-xs prose-slate prose-sm text-slate-600">Posted by {node.uid.display_name} - {formatDate(node.created)}</span>
       <span
         className="mb-1 block text-sm leading-6 text-cyan-500">{node.field_tags}</span>
-      <Link href={node.path.alias} passHref legacyBehavior={true}>
-        <a
-          className="inline-flex items-center hover:underline text-slate-900 text-link font-bold">
+      <Link href={node.path.alias} passHref legacyBehavior={true} className="inline-flex items-center hover:underline text-slate-900 text-link font-bold">
+          
           {'View article'}
           <svg
             className="w-5 h-5 ml-1"
@@ -45,7 +44,6 @@ export function NodeArticleCard({ node, ...props }: NodeArticleCardProps) {
           >
             <path d="m9 18 6-6-6-6" />
           </svg>
-        </a>
       </Link>
     </article>
   )

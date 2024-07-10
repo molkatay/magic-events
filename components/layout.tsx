@@ -1,8 +1,8 @@
-import { Meta, MetaProps } from "components/meta"
-import { PreviewAlert } from "components/preview-alert"
-import { Header, HeaderProps } from "components/header"
-import { Footer, FooterProps } from "components/footer"
-import { TailwindIndicator } from "components/tailwind-indicator"
+import { Meta, MetaProps } from "./meta"
+import { PreviewAlert } from "./preview-alert"
+import { Header, HeaderProps } from "./header"
+import { Footer, FooterProps } from "./footer"
+import { TailwindIndicator } from "./tailwind-indicator"
 import React from 'react'
 
 export interface LayoutProps extends HeaderProps, FooterProps {
@@ -11,7 +11,7 @@ export interface LayoutProps extends HeaderProps, FooterProps {
   children?: React.ReactNode
 }
 
-export function Layout({ meta, menus,siteInfos, blocks, children }: LayoutProps) {
+export function Layout({ meta, menus, siteInfos, blocks, children }: LayoutProps) {
   return (
     <>
       <Meta {...meta} />
@@ -19,7 +19,7 @@ export function Layout({ meta, menus,siteInfos, blocks, children }: LayoutProps)
         <PreviewAlert />
         <Header menus={{ main: menus.main }} siteInfos={siteInfos} />
         <main className="relative overflow-hidden">{children}</main>
-        <Footer menus={{ footer: menus.footer }} blocks={blocks} siteInfos={siteInfos}/>
+        <Footer menus={{ footer: menus.footer }} blocks={blocks} siteInfos={siteInfos} />
       </div>
       <TailwindIndicator />
     </>

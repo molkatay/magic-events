@@ -1,8 +1,8 @@
 import { DrupalNode } from "next-drupal"
 import { useRouter } from "next/router"
 
-import { formatDate } from "lib/utils"
-import { MediaImage } from "components/media--image"
+import { formatDate } from "../lib/utils"
+import { MediaImage } from "./media--image"
 import Button from './Button'
 
 interface NodeArticleRowProps {

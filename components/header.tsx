@@ -5,11 +5,10 @@ import Image from "next/image"
 import { DrupalMenuLinkContent } from "next-drupal"
 import classNames from "classnames"
 
-import siteConfig from "site.config"
-import { Logo } from "components/logo"
-import { MenuMain } from "components/menu-main"
-import { MenuUser } from "components/menu-user"
-import { FormSearch } from "components/form--search"
+import siteConfig from "../site.config"
+import { MenuMain } from "./menu-main"
+import { MenuUser } from "./menu-user"
+import { FormSearch } from "./form--search"
 import { absoluteUrl, loaderProp } from '../lib/utils'
 
 export interface HeaderProps {
@@ -38,11 +37,9 @@ export function Header({ menus, siteInfos }: HeaderProps) {
         </div>
 
         <div className="flex justify-between items-center py-6 flex-wrap">
-          <Link href="/" passHref legacyBehavior={true}>
-            <a className="flex items-center">
-              <Image src={absoluteUrl(siteInfos.siteInfos.logo)}  loader={loaderProp} alt={siteInfos.siteInfos.name} width={120} height={30}/>
+          <Link href="/" passHref  className="flex items-center">
+              <Image src={absoluteUrl(siteInfos.siteInfos.logo)} loader={loaderProp} alt={siteInfos.siteInfos.name} width={120} height={30}/>
               <span className="sr-only">{siteConfig.name}</span>
-            </a>
           </Link>
           <button
             className="md:hidden border-transparent hover:border-link transition-all absolute right-4 top-8"

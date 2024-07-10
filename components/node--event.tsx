@@ -2,7 +2,7 @@ import Image from "next/image"
 import { DrupalNode } from "next-drupal"
 import Link from "next/link";
 
-import { absoluteUrl, formatDate } from "lib/utils"
+import { absoluteUrl, formatDate } from "../lib/utils"
 import { MediaImage } from "./media--image";
 import { Breadcrumbs } from "./breadcrumbs";
 
@@ -60,7 +60,7 @@ export function NodeEvent({ node, ...props }: NodeEventProps) {
             <div>
                 <h3>Type</h3>
           <ul>                            
-            <li><a href="term/{item.id}">{node.field_event_type.name}</a></li>
+            <li><Link href="term/{item.id}">{node.field_event_type.name}</Link></li>
 
                 </ul>
             </div>

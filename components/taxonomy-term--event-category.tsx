@@ -1,7 +1,7 @@
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal"
 
-import { Breadcrumbs } from "components/breadcrumbs"
-import { PageHeader } from "components/page-header"
+import { Breadcrumbs } from "./breadcrumbs"
+import { PageHeader } from "./page-header"
 import { NodeEventTeaser } from "./node--event--teaser"
 
 export interface TaxonomyTermEventCategoryProps {

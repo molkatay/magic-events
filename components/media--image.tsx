@@ -1,7 +1,7 @@
 import Image, { ImageProps } from "next/image"
 
-import { absoluteUrl, absoluteURL, loaderProp } from 'lib/utils'
-import { MediaProps } from "components/media"
+import { absoluteUrl, loaderProp } from '../lib/utils'
+import { MediaProps } from "./media"
 
 interface MediaImageProps extends MediaProps, Partial<ImageProps> {}
 

@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 
-import siteConfig from "site.config"
+import siteConfig from "../site.config"
 
 export interface MetaProps {
   title?: string
