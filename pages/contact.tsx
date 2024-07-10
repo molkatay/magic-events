@@ -1,10 +1,9 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 
-import { getGlobalElements } from 'lib/get-global-elements'
-import { Breadcrumbs } from 'components/breadcrumbs'
-import { Layout, LayoutProps } from 'components/layout'
-import { PageHeader } from 'components/page-header'
-import { FormContact } from 'components/form--contact'
+import { getGlobalElements } from '../lib/get-global-elements'
+import { Layout, LayoutProps } from '../components/layout'
+import { PageHeader } from '../components/page-header'
+import { FormContact } from '../components/form--contact'
 
 interface ContactPageProps extends LayoutProps {
 }
@@ -20,7 +19,8 @@ export default function ContactPage({
       menus={menus}
       blocks={blocks} siteInfos={siteInfos}
     >
-      <PageHeader
+
+     <PageHeader
         heading={'Contact Us'}
         breadcrumbs={[
           {

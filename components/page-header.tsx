@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import { BreadcrumbsProps, Breadcrumbs } from "components/breadcrumbs"
+import { BreadcrumbsProps, Breadcrumbs } from "./breadcrumbs"
 
 interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   heading: string

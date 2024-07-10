@@ -6,7 +6,7 @@ import parse, {
 import Image from "next/image"
 import Link from "next/link"
 
-import { isRelative } from "lib/utils"
+import { isRelative } from "../lib/utils"
 
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
@@ -41,8 +41,8 @@ const options: HTMLReactParserOptions = {
 
         if (href && isRelative(href)) {
           return (
-            <Link href={href} passHref legacyBehavior={true}>
-              <a className={className}>{domToReact(domNode.children)}</a>
+            <Link href={href} passHref className={className}>
+             {domToReact(domNode.children)}
             </Link>
           )
         }

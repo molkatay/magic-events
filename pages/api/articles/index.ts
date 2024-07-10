@@ -5,7 +5,7 @@ import { promises as fs } from "fs"
 import { DrupalJsonApiParams } from "drupal-jsonapi-params"
 import { DrupalFile, DrupalMedia, DrupalNode, JsonApiErrors } from "next-drupal"
 
-import { drupal } from "lib/drupal"
+import { drupal } from "../../../lib/drupal"
 
 type FormBodyFields = {
   title: string
@@ -48,7 +48,7 @@ export default async function handler(
       keepExtensions: true,
     })
     // Decode the BasicAuth credentials from the session
-    const { username, password } = decodeBase64Credentials(session.basicAuth);
+    const { username, password } = decodeBase64Credentials(session?.basicAuth);
 
     const fields = await new Promise<FormBodyFields>((resolve, reject) => {
       form.parse(req, async (error, fields, files) => {

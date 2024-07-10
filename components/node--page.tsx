@@ -1,5 +1,5 @@
 import { DrupalNode } from 'next-drupal'
-import { Breadcrumbs } from 'components/breadcrumbs'
+import { Breadcrumbs } from './breadcrumbs'
 import { FormattedText } from './formatted-text'
 import { PageHeader } from './page-header'
 

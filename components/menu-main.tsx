@@ -19,21 +19,18 @@ export function MenuMain({ items, ...props }: MenuMainProps) {
             `/${router.asPath === "/" ? "" : router.asPath}` ===
               item.url ||
             (item.url !== "/" ? router.asPath.indexOf(item.url) === 0 : false)
-
           return (
             <li key={item.id}>
-              <Link href={item.url} passHref legacyBehavior={true}>
-                <a
-                  className={classNames(
+              <Link href={item.url} passHref className={classNames(
                     "regular-16 border-b-[3px] flex border-b-transparent transition-colors hover:text-primary",
                     {
                       "border-b-primary": isActive,
                     }
-                  )}
-                >
+                  )}>
+                
                   {item.title}
-                </a>
               </Link>
+
             </li>
           )
         })}

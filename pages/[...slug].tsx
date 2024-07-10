@@ -1,22 +1,22 @@
 import { GetStaticPathsResult, GetStaticPropsResult } from "next"
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal"
 
-import { PageProps } from "types"
-import { drupal } from "lib/drupal"
-import { getGlobalElements } from "lib/get-global-elements"
-import { getParams } from "lib/get-params"
-import { Layout, LayoutProps } from "components/layout"
-import { NodeArticle, NodeArticleProps } from "components/node--article"
-import { NodeEvent } from "components/node--event"
-import { NodePage } from "components/node--page"
+import { PageProps } from "../types"
+import { drupal } from "../lib/drupal"
+import { getGlobalElements } from "../lib/get-global-elements"
+import { getParams } from "../lib/get-params"
+import { Layout, LayoutProps } from "../components/layout"
+import { NodeArticle, NodeArticleProps } from "../components/node--article"
+import { NodeEvent } from "../components/node--event"
+import { NodePage } from "../components/node--page"
 import {
-  TaxonomyTermeventCategory,
-  TaxonomyTermeventCategoryProps,
-} from "components/taxonomy-term--event-category"
+  TaxonomyTermEventCategory,
+  TaxonomyTermEventCategoryProps,
+} from "../components/taxonomy-term--event-category"
 import {
   TaxonomyTermTags,
   TaxonomyTermTagsProps,
-} from "components/taxonomy-term--tags"
+} from "../components/taxonomy-term--tags"
 import { PageHeader } from '../components/page-header'
 
 const RESOURCE_TYPES = [
@@ -64,10 +64,10 @@ export default function ResourcePage({
         <NodeEvent node={resource as DrupalNode} />
       )}
       {resource.type === "taxonomy_term--event_type" && (
-        <TaxonomyTermeventCategory
+        <TaxonomyTermEventCategory
           term={resource as DrupalTaxonomyTerm}
           additionalContent={
-            additionalContent as TaxonomyTermeventCategoryProps["additionalContent"]
+            additionalContent as TaxonomyTermEventCategoryProps["additionalContent"]
           }
         />
       )}

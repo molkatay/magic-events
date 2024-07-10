@@ -1,10 +1,10 @@
 import * as React from "react"
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal"
 
-import { Breadcrumbs } from "components/breadcrumbs"
-import { PageHeader } from "components/page-header"
-import { NodeEventTeaser } from "components/node--event--teaser"
-import { NodeArticleCard } from "components/node--article--card"
+import { Breadcrumbs } from "./breadcrumbs"
+import { PageHeader } from "./page-header"
+import { NodeEventTeaser } from "./node--event--teaser"
+import { NodeArticleCard } from "./node--article--card"
 
 export interface TaxonomyTermTagsProps {
   term: DrupalTaxonomyTerm

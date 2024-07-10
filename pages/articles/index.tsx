@@ -1,12 +1,12 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import { DrupalNode } from "next-drupal"
 
-import { drupal } from "lib/drupal"
-import { getGlobalElements } from "lib/get-global-elements"
-import { getParams } from "lib/get-params"
-import { Layout, LayoutProps } from "components/layout"
-import { NodeArticleCard } from "components/node--article--card"
-import { PageHeader } from "components/page-header"
+import { drupal } from "../../lib/drupal"
+import { getGlobalElements } from "../../lib/get-global-elements"
+import { getParams } from "../../lib/get-params"
+import { Layout, LayoutProps } from "../../components/layout"
+import { NodeArticleCard } from "../../components/node--article--card"
+import { PageHeader } from "../../components/page-header"
 
 interface ArticlePageProps extends LayoutProps {
   articles: DrupalNode[]

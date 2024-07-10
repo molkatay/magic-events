@@ -1,10 +1,10 @@
 import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 import { DrupalBlock, DrupalTaxonomyTerm } from "next-drupal";
 
-import { drupal } from "lib/drupal";
-import { getParams } from "lib/get-params";
-import { LayoutProps } from "components/layout";
-import siteConfig from "site.config"
+import { drupal } from "./drupal";
+import { getParams } from "./get-params";
+import { LayoutProps } from "../components/layout";
+import siteConfig from "../site.config"
 type GlobalElements = LayoutProps;
 
 // This is a helper function to fetch global elements for layout.

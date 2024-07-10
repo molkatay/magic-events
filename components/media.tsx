@@ -1,6 +1,6 @@
 import { DrupalMedia } from "next-drupal"
 
-import { MediaImage } from "components/media--image"
+import { MediaImage } from "./media--image"
 
 const mediaTypes = {
   "media--image": MediaImage,
